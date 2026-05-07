@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desserts</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+</head>
+<body>
+
+<div id="menu-container"></div>
+
+<script>
+fetch("menu.html")
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById("menu-container").innerHTML = data;
+  });
+</script>
+
+<section class="menu">
+    <h2 class="section-title">Nos Desserts</h2>
+
+    <div class="menu-grid">
+
+        <div class="card">
+            <img src="images/dessert1.jpg">
+            <div class="card-content">
+                <h3>Chocolate Cake</h3>
+                <p>Fondant chocolat intense.</p>
+                <div class="price">9€</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/dessert2.jpg">
+            <div class="card-content">
+                <h3>Tiramisu</h3>
+                <p>Dessert italien crémeux.</p>
+                <div class="price">8€</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/dessert3.jpg">
+            <div class="card-content">
+                <h3>Donuts</h3>
+                <p>Donuts glacés premium.</p>
+                <div class="price">7€</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="images/dessert4.jpg">
+            <div class="card-content">
+                <h3>Ice Cream</h3>
+                <p>Glace artisanale vanille.</p>
+                <div class="price">6€</div>
+            </div>
+        </div>
+    
+    </div>
+</section>
+
+</body>
+</html>

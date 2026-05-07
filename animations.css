@@ -1,0 +1,16 @@
+.card {
+    transition: .4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+button {
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}

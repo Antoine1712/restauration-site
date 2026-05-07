@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comptoir Gourmand</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="animations.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header id="mainHeader">
+    <nav>
+        <div class="logo">Comptoir Gourmand</div>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+        ☰
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-buttons">
+            <button onclick="toggleMode()">🌙</button>
+            <button onclick="toggleCart()">
+                🛒 <span id="cart-count">0</span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h1>Restaurant Premium</h1>
+        <p>Une expérience moderne inspirée d’Uber Eats et Apple.</p>
+        <button>Commander maintenant</button>
+    </div>
+</section>
+
+<section class="menu" id="menu">
+    <h2>Notre Menu</h2>
+
+    <div class="filters">
+        <a href="burgers.html" class="filter-btn">Burgers</a>
+        <a href="pizzas.html" class="filter-btn">Pizzas</a>
+        <a href="desserts.html" class="filter-btn">Desserts</a>
+    </div>
+
+    <!-- MENU GRID -->
+    <div class="menu-grid">
+
+        <div class="card" data-category="burger">
+            <img src="images/burger.jpg" alt="Burger">
+            <div class="card-content">
+                <h3>Classic Burger</h3>
+                <p>Burger avec cheddar et sauce maison.</p>
+                <div class="price">14€</div>
+                <button onclick="addToCart('Classic Burger',14)">
+                    Ajouter au panier
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="pizza">
+            <img src="images/pizza.jpg" alt="Pizza">
+            <div class="card-content">
+                <h3>Pizza Royale</h3>
+                <p>Pizza artisanale italienne cuite au four.</p>
+                <div class="price">18€</div>
+                <button onclick="addToCart('Pizza Royale',18)">
+                    Ajouter au panier
+                </button>
+            </div>
+        </div>
+
+        <div class="card" data-category="dessert">
+            <img src="images/dessert.jpg" alt="Dessert">
+            <div class="card-content">
+                <h3>Donuts</h3>
+                <p>Donuts glacés premium.</p>
+                <div class="price">7€</div>
+                <button onclick="addToCart('Donuts',9)">
+                    Ajouter au panier
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- PANIER -->
+<div class="cart-panel" id="cartPanel">
+
+    <h2>
+        Votre Panier
+    </h2>
+
+    <div id="cartItems">
+
+    </div>
+
+    <div class="cart-total">
+        Total :
+        <span id="total">0</span>
+        €
+    </div>
+
+    <button class="checkout-btn">
+        Passer la commande
+    </button>
+
+</div>
+
+<!-- AVIS -->
+<section class="testimonials" id="reviews">
+
+    <h2 class="section-title">
+        Avis Clients
+    </h2>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial">
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+
+            <h3>Camille</h3>
+
+            <p>
+                Une expérience exceptionnelle et un design magnifique.
+            </p>
+        </div>
+
+        <div class="testimonial">
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+
+            <h3>Lucas</h3>
+
+            <p>
+                Livraison rapide et nourriture incroyable.
+            </p>
+        </div>
+
+        <div class="testimonial">
+            <p>⭐️⭐️⭐️⭐️⭐️</p>
+
+            <h3>Sarah</h3>
+
+            <p>
+                Le meilleur site de restauration que j’ai utilisé.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+
+    <h2>
+        Comptoir Gourmand
+    </h2>
+
+    <p>
+        📍 Paris, France
+    </p>
+
+    <p>
+        📞 +33 6 12 34 56 78
+    </p>
+
+    <p>
+        © 2026 GourmetExpress - Tous droits réservés.
+    </p>
+
+</footer>
+
+<!-- JAVASCRIPT -->
+<script src="cart.js"></script>
+<script src="filter.js"></script>
+<script src="darkmode.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>
