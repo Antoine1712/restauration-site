@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="animations.css">
 </head>
+
 <body>
 
+<!-- MENU GLOBAL -->
 <div id="menu-container"></div>
 
 <script>
@@ -21,6 +23,7 @@ fetch("menu.html")
   });
 </script>
 
+<!-- NAV PANIER -->
 <nav class="nav">
 
     <div class="nav-spacer"></div>
@@ -31,6 +34,7 @@ fetch("menu.html")
 
 </nav>
 
+<!-- SECTION BOISSONS -->
 <section class="menu">
     <h2 class="section-title">Nos Boissons</h2>
 
@@ -86,6 +90,22 @@ fetch("menu.html")
 
     </div>
 </section>
+
+<!-- PANIER (IMPORTANT POUR AFFICHAGE + TOTAL) -->
+<div class="cart-panel" id="cartPanel">
+
+    <h2>Votre Panier</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+        Total : <span id="total">0</span> €
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="cart.js"></script>
 
 </body>
 </html>

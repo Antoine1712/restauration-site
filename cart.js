@@ -1,6 +1,12 @@
+/* ================= PANIER GLOBAL (LOCALSTORAGE) ================= */
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// AJOUT PRODUIT
+/* ================= SAUVEGARDE ================= */
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+/* ================= AJOUT ================= */
 function addToCart(name, price) {
 
     const existing = cart.find(item => item.name === name);
@@ -19,26 +25,43 @@ function addToCart(name, price) {
     updateCart();
 }
 
-// SUPPRESSION PRODUIT
-function removeFromCart(name) {
+/* ================= SUPPRIMER ================= */
+function removeItem(name) {
     cart = cart.filter(item => item.name !== name);
+
     saveCart();
     updateCart();
 }
 
-// VIDER PANIER
-function clearCart() {
-    cart = [];
+/* ================= DIMINUER ================= */
+function decreaseItem(name) {
+
+    const item = cart.find(item => item.name === name);
+    if (!item) return;
+
+    item.quantity -= 1;
+
+    if (item.quantity <= 0) {
+        removeItem(name);
+    } else {
+        saveCart();
+        updateCart();
+    }
+}
+
+/* ================= AUGMENTER ================= */
+function increaseItem(name) {
+
+    const item = cart.find(item => item.name === name);
+    if (!item) return;
+
+    item.quantity += 1;
+
     saveCart();
     updateCart();
 }
 
-// SAUVEGARDE
-function saveCart() {
-    localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-// UPDATE UI
+/* ================= UPDATE UI ================= */
 function updateCart() {
 
     const cartItems = document.getElementById("cartItems");
@@ -48,6 +71,7 @@ function updateCart() {
     let totalPrice = 0;
     let totalItems = 0;
 
+    // sécurisation (évite crash sur pages sans panier)
     if (cartItems) cartItems.innerHTML = "";
 
     cart.forEach(item => {
@@ -58,18 +82,28 @@ function updateCart() {
         if (cartItems) {
             cartItems.innerHTML += `
                 <div class="cart-item">
-                    <p>${item.name}</p>
-                    <p>${item.quantity} x ${item.price}€</p>
-                    <button onclick="removeFromCart('${item.name}')">❌</button>
+                    <div>
+                        <p><strong>${item.name}</strong></p>
+                        <p>${item.price.toFixed(2)} €</p>
+                    </div>
+
+                    <div class="cart-controls">
+                        <button onclick="decreaseItem('${item.name}')">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="increaseItem('${item.name}')">+</button>
+                    </div>
+
+                    <button onclick="removeItem('${item.name}')">❌</button>
                 </div>
             `;
         }
-
     });
 
     if (total) total.innerText = totalPrice.toFixed(2);
     if (count) count.innerText = totalItems;
 }
 
-// INIT
-updateCart();
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded", () => {
+    updateCart();
+});

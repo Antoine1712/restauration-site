@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="animations.css">
 </head>
+
 <body>
 
+<!-- MENU GLOBAL -->
 <div id="menu-container"></div>
 
 <script>
@@ -21,6 +23,7 @@ fetch("menu.html")
   });
 </script>
 
+<!-- NAV PANIER -->
 <nav class="nav">
 
     <div class="nav-spacer"></div>
@@ -31,54 +34,55 @@ fetch("menu.html")
 
 </nav>
 
+<!-- SECTION BURGERS -->
 <section class="menu">
     <h2 class="section-title">Nos Burgers</h2>
 
     <div class="menu-grid">
 
         <div class="card">
-            <img src="images/burger.jpg">
+            <img src="images/burger.jpg" alt="Burger">
             <div class="card-content">
                 <h3>Burger Classique</h3>
                 <p>Steak premium, cheddar, sauce maison</p>
                 <div class="price">14€</div>
-                <button onclick="addToCart('Burger Classique',14)">
+                <button onclick="addToCart('Burger Classique', 14)">
                     Ajouter au panier
                 </button>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/burger1.jpg">
+            <img src="images/burger1.jpg" alt="Double Beef">
             <div class="card-content">
                 <h3>Double Beef</h3>
-                <p>Double steak et fromage fondant Salade Bio</p>
+                <p>Double steak et fromage fondant, salade bio</p>
                 <div class="price">18€</div>
-                <button onclick="addToCart('Double Beef',18)">
+                <button onclick="addToCart('Double Beef', 18)">
                     Ajouter au panier
                 </button>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/burger2.jpg">
+            <img src="images/burger2.jpg" alt="Chicken Burger">
             <div class="card-content">
                 <h3>Chicken Burger</h3>
-                <p>Poulet croustillant et sauce spicy Frites</p>
+                <p>Poulet croustillant et sauce spicy, frites</p>
                 <div class="price">15€</div>
-                <button onclick="addToCart('Chicken Burger',15)">
+                <button onclick="addToCart('Chicken Burger', 15)">
                     Ajouter au panier
                 </button>
             </div>
         </div>
 
         <div class="card">
-            <img src="images/burger3.jpg">
+            <img src="images/burger3.jpg" alt="BBQ Burger">
             <div class="card-content">
                 <h3>BBQ Burger</h3>
-                <p>Sauce BBQ fumée et bacon grillé Tomates & Mache</p>
+                <p>Sauce BBQ fumée et bacon grillé</p>
                 <div class="price">17€</div>
-                <button onclick="addToCart('BBQ Burger',17)">
+                <button onclick="addToCart('BBQ Burger', 17)">
                     Ajouter au panier
                 </button>
             </div>
@@ -86,6 +90,22 @@ fetch("menu.html")
 
     </div>
 </section>
+
+<!-- PANIER (IMPORTANT POUR AFFICHAGE + TOTAL) -->
+<div class="cart-panel" id="cartPanel">
+
+    <h2>Votre Panier</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+        Total : <span id="total">0</span> €
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="cart.js"></script>
 
 </body>
 </html>
