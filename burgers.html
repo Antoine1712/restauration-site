@@ -46,8 +46,9 @@ fetch("menu.html")
                 <h3>Burger Classique</h3>
                 <p>Steak premium, cheddar, sauce maison</p>
                 <div class="price">14€</div>
-                <button onclick="addToCart('Burger Classique', 14)">
-                    Ajouter au panier
+
+                <button onclick="addToCart('b1')">
+                Ajouter au panier
                 </button>
             </div>
         </div>
@@ -58,8 +59,9 @@ fetch("menu.html")
                 <h3>Double Beef</h3>
                 <p>Double steak et fromage fondant, salade bio</p>
                 <div class="price">18€</div>
-                <button onclick="addToCart('Double Beef', 18)">
-                    Ajouter au panier
+                
+                <button onclick="addToCart('b2')">
+                Ajouter au panier
                 </button>
             </div>
         </div>
@@ -70,8 +72,9 @@ fetch("menu.html")
                 <h3>Chicken Burger</h3>
                 <p>Poulet croustillant et sauce spicy, frites</p>
                 <div class="price">15€</div>
-                <button onclick="addToCart('Chicken Burger', 15)">
-                    Ajouter au panier
+                
+                <button onclick="addToCart('b3')">
+                Ajouter au panier
                 </button>
             </div>
         </div>
@@ -82,15 +85,15 @@ fetch("menu.html")
                 <h3>BBQ Burger</h3>
                 <p>Sauce BBQ fumée et bacon grillé</p>
                 <div class="price">17€</div>
-                <button onclick="addToCart('BBQ Burger', 17)">
-                    Ajouter au panier
+
+                <button onclick="addToCart('b4')">
+                Ajouter au panier
                 </button>
             </div>
         </div>
 
     </div>
 </section>
-
 <!-- PANIER (IMPORTANT POUR AFFICHAGE + TOTAL) -->
 <div class="cart-panel" id="cartPanel">
 
@@ -104,8 +107,11 @@ fetch("menu.html")
 
 </div>
 
+
 <!-- JS -->
+<script src="products.js"></script>
 <script src="cart.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>

@@ -97,28 +97,7 @@
 
 </section>
 
-<!-- PANIER -->
-<div class="cart-panel" id="cartPanel">
 
-    <h2>
-        Votre Panier
-    </h2>
-
-    <div id="cartItems">
-
-    </div>
-
-    <div class="cart-total">
-        Total :
-        <span id="total">0</span>
-        €
-    </div>
-
-    <button class="checkout-btn">
-        Passer la commande
-    </button>
-
-</div>
 
 <!-- AVIS -->
 <section class="testimonials" id="reviews">
@@ -183,12 +162,25 @@
     </p>
 
 </footer>
+<!-- PANIER (IMPORTANT POUR AFFICHAGE + TOTAL) -->
+<div class="cart-panel" id="cartPanel">
+
+    <h2>Votre Panier</h2>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-total">
+        Total : <span id="total">0</span> €
+    </div>
+
+</div>
 
 <!-- JAVASCRIPT -->
+<script src="products.js"></script>
 <script src="cart.js"></script>
-<script src="filter.js"></script>
-<script src="darkmode.js"></script>
 <script src="app.js"></script>
 
+<script src="filter.js"></script>
+<script src="darkmode.js"></script>
 </body>
 </html>

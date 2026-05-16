@@ -1,124 +1,66 @@
-/* ================= PANIER GLOBAL (LOCALSTORAGE) ================= */
 let cart = [];
 
 function loadCart() {
-    try {
-        cart = JSON.parse(localStorage.getItem("cart")) || [];
-    } catch (e) {
-        cart = [];
-    }
+    cart = JSON.parse(localStorage.getItem("cart")) || [];
 }
-/* ================= SAUVEGARDE ================= */
+
 function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-/* ================= AJOUT ================= */
-function addToCart(name, price) {
+function addToCart(id) {
 
-    const existing = cart.find(item => item.name === name);
+    const product = PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+
+    const existing = cart.find(i => i.id === id);
 
     if (existing) {
-        existing.quantity += 1;
+        existing.quantity++;
     } else {
         cart.push({
-            name: name,
-            price: price,
+            id: product.id,
+            name: product.name,
+            price: product.price,
             quantity: 1
         });
     }
 
     saveCart();
-    updateCart();
+    renderCart();
 }
 
-/* ================= SUPPRIMER ================= */
-function removeItem(name) {
-    cart = cart.filter(item => item.name !== name);
-
+function removeItem(id) {
+    cart = cart.filter(i => i.id !== id);
     saveCart();
-    updateCart();
+    renderCart();
 }
 
-/* ================= CLEAR CART ================= */
-function clearCart() {
-    cart = [];
-    saveCart();
-    updateCart();
-}
-
-/* ================= DIMINUER ================= */
-function decreaseItem(name) {
-
-    const item = cart.find(item => item.name === name);
+function increaseItem(id) {
+    const item = cart.find(i => i.id === id);
     if (!item) return;
 
-    item.quantity -= 1;
+    item.quantity++;
+    saveCart();
+    renderCart();
+}
+
+function decreaseItem(id) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+
+    item.quantity--;
 
     if (item.quantity <= 0) {
-        removeItem(name);
+        removeItem(id);
     } else {
         saveCart();
-        updateCart();
+        renderCart();
     }
 }
 
-/* ================= AUGMENTER ================= */
-function increaseItem(name) {
-
-    const item = cart.find(item => item.name === name);
-    if (!item) return;
-
-    item.quantity += 1;
-
+function clearCart() {
+    cart = [];
     saveCart();
-    updateCart();
+    renderCart();
 }
-
-/* ================= UPDATE UI ================= */
-function updateCart() {
-
-    const cartItems = document.getElementById("cartItems");
-    const total = document.getElementById("total");
-    const count = document.getElementById("cart-count");
-
-    let totalPrice = 0;
-    let totalItems = 0;
-
-    // sécurisation (évite crash sur pages sans panier)
-    if (cartItems) cartItems.innerHTML = "";
-
-    cart.forEach(item => {
-
-        totalPrice += item.price * item.quantity;
-        totalItems += item.quantity;
-
-        if (cartItems) {
-            cartItems.innerHTML += `
-                <div class="cart-item">
-                    <div>
-                        <p><strong>${item.name}</strong></p>
-                        <p>${item.price.toFixed(2)} €</p>
-                    </div>
-
-                    <div class="cart-controls">
-                        <button onclick="decreaseItem('${item.name}')">-</button>
-                        <span>${item.quantity}</span>
-                        <button onclick="increaseItem('${item.name}')">+</button>
-                    </div>
-
-                    <button onclick="removeItem('${item.name}')">❌</button>
-                </div>
-            `;
-        }
-    });
-
-    if (total) total.innerText = totalPrice.toFixed(2);
-    if (count) count.innerText = totalItems;
-}
-
-/* ================= INIT ================= */
-document.addEventListener("DOMContentLoaded", () => {
-    loadCart();
-    updateCart();
-});
