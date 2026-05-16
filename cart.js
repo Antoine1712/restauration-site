@@ -1,6 +1,13 @@
 /* ================= PANIER GLOBAL (LOCALSTORAGE) ================= */
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = [];
 
+function loadCart() {
+    try {
+        cart = JSON.parse(localStorage.getItem("cart")) || [];
+    } catch (e) {
+        cart = [];
+    }
+}
 /* ================= SAUVEGARDE ================= */
 function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
@@ -29,6 +36,13 @@ function addToCart(name, price) {
 function removeItem(name) {
     cart = cart.filter(item => item.name !== name);
 
+    saveCart();
+    updateCart();
+}
+
+/* ================= CLEAR CART ================= */
+function clearCart() {
+    cart = [];
     saveCart();
     updateCart();
 }
@@ -105,5 +119,6 @@ function updateCart() {
 
 /* ================= INIT ================= */
 document.addEventListener("DOMContentLoaded", () => {
+    loadCart();
     updateCart();
 });
