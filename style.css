@@ -4,11 +4,16 @@
     box-sizing: border-box;
 }
 
+/* ================= BODY ================= */
+
 body {
     font-family: 'Poppins', sans-serif;
     background: #0d0d0d;
     color: white;
+    padding-top: 70px;
 }
+
+/* ================= HEADER ================= */
 
 header {
     position: fixed;
@@ -16,6 +21,7 @@ header {
     top: 0;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
 nav {
@@ -31,6 +37,8 @@ nav {
     color: #ff4d4d;
 }
 
+/* ================= NAV LINKS ================= */
+
 .nav-links {
     display: flex;
     gap: 20px;
@@ -41,6 +49,8 @@ nav {
     color: white;
     text-decoration: none;
 }
+
+/* ================= HERO ================= */
 
 .hero {
     height: 100vh;
@@ -67,6 +77,8 @@ nav {
     cursor: pointer;
 }
 
+/* ================= MENU ================= */
+
 .menu {
     padding: 120px 8%;
 }
@@ -78,12 +90,16 @@ nav {
     margin-top: 40px;
 }
 
+/* ================= MENU TOGGLE ================= */
+
 .menu-toggle {
     display: none;
     font-size: 28px;
     cursor: pointer;
     color: white;
 }
+
+/* ================= CARDS ================= */
 
 .card {
     background: rgba(255,255,255,.05);
@@ -117,6 +133,8 @@ nav {
     cursor: pointer;
 }
 
+/* ================= CART ================= */
+
 .cart-panel {
     position: fixed;
     right: -400px;
@@ -132,11 +150,25 @@ nav {
     right: 0;
 }
 
-footer {
-    padding: 50px;
-    text-align: center;
-    background: #080808;
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px 0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
 }
+
+.cart-item button {
+    background: red;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* ================= FILTER BUTTONS ================= */
 
 .filter-btn {
     display: inline-block;
@@ -158,6 +190,8 @@ footer {
     transform: translateY(-3px);
     box-shadow: 0 10px 25px rgba(255, 77, 77, 0.3);
 }
+
+/* ================= GLOBAL MENU ================= */
 
 .global-menu {
     position: fixed;
@@ -189,34 +223,24 @@ footer {
     transform: translateY(-2px);
 }
 
-body {
-    padding-top: 70px;
+/* ================= FOOTER ================= */
+
+footer {
+    padding: 50px;
+    text-align: center;
+    background: #080808;
 }
 
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    margin: 10px 0;
-    background: rgba(255,255,255,0.05);
-    border-radius: 12px;
-}
-
-.cart-item button {
-    background: red;
-    border: none;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+/* ================= EXTRA NAV ALIGN ================= */
 
 .nav {
     display: flex;
-    justify-content: flex-end; /* pousse tout à droite */
+    justify-content: flex-end;
     align-items: center;
     padding: 20px 8%;
 }
+
+/* ================= RESPONSIVE ================= */
 
 @media (max-width: 768px) {
 
